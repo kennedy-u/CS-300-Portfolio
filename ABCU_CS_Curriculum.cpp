@@ -1,9 +1,8 @@
 //============================================================================
 // Name        : ABCU_CS_Curriculum.cpp
 // Author      : Kennedy Uzoho
-// Version     :
-// Copyright   : Bubble sort (c) 2022 Kennedy Uzoho
-// Description : Hello World in C++, Ansi-style
+// Version     : 1.0
+// Description : Ansi-style C++
 //============================================================================
 
 #include <iostream>
@@ -18,14 +17,14 @@ using namespace std;
 
 // Definition of structure course
 
-struct Course {
+struct Course
+{
 
 	string courseNumber;
 
 	string name;
 
 	vector<string> prerequisites;
-
 };
 
 // Function to split string to list of strings on the basis of given delimiter
@@ -40,20 +39,19 @@ vector<string> tokenize(string s, string del = " ")
 
 	int end = s.find(del);
 
-	while (end != -1) {
+	while (end != -1)
+	{
 
 		stringArray.push_back(s.substr(start, end - start));
 
 		start = end + del.size();
 
 		end = s.find(del, start);
-
 	}
 
 	stringArray.push_back(s.substr(start, end - start));
 
 	return stringArray;
-
 }
 
 // Function to load file and store the details into list of courses
@@ -103,13 +101,11 @@ vector<Course> LoadDataStructure()
 		{
 
 			course.prerequisites.push_back(tokenizedInformation[i]);
-
 		}
 
 		// appending the course into list of courses
 
 		courses.push_back(course);
-
 	}
 
 	// closing the file
@@ -119,7 +115,6 @@ vector<Course> LoadDataStructure()
 	// return the list of courses
 
 	return courses;
-
 }
 
 // printing course information of given course in proper format
@@ -145,11 +140,9 @@ void printCourse(Course course)
 	{
 
 		cout << prerequisites[i] << " ";
-
 	}
 
 	cout << "\n\n";
-
 }
 
 // printing course information of all courses in proper format
@@ -175,11 +168,8 @@ void printCourseList(vector<Course> courses)
 			{
 
 				swap(courses[j + 1], courses[j]);
-
 			}
-
 		}
-
 	}
 
 	// traversing list of courses to print all courses information
@@ -189,9 +179,7 @@ void printCourseList(vector<Course> courses)
 	{
 
 		printCourse(courses[i]);
-
 	}
-
 }
 
 // search the course for the user entered course number
@@ -225,9 +213,7 @@ void searchCourse(vector<Course> courses)
 			printCourse(courses[i]);
 
 			break;
-
 		}
-
 	}
 
 	// if course with given course name not found then print error message
@@ -237,9 +223,7 @@ void searchCourse(vector<Course> courses)
 	{
 
 		cout << "Course with given course number not found\n";
-
 	}
-
 }
 
 int main(int argc, char **argv)
@@ -249,11 +233,13 @@ int main(int argc, char **argv)
 	vector<Course> courses;
 
 	// Printing menu statement
-	cout << "Welcome to ABCU course planner.\n" << endl;
+	cout << "Welcome to ABCU course planner.\n"
+		 << endl;
 	int ch;
 	// loop will break once user enter 4
 
-	do {
+	do
+	{
 
 		// Prompt user to enter choice
 		cout << "1.Load Data Structure" << endl;
@@ -286,13 +272,12 @@ int main(int argc, char **argv)
 
 		case 9:
 			cout << "\nThank you for using the course planner! Goodbye \n\n\n"
-					<< endl;
+				 << endl;
 
 			break;
 
 		default:
 			cout << "Invalid Choice\n";
-
 		}
 
 	} while (ch != 4);
@@ -300,5 +285,4 @@ int main(int argc, char **argv)
 	return 0;
 
 	system("pause>0");
-
 }
